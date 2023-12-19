@@ -56,12 +56,12 @@ export const SearchProvider = ({ children }: ProviderProps) => {
     businesses: [],
     on_page: 1,
     max_pages: 1,
-  })
+  } as ResultsType)
   const [searchParams, setSearchParams] = useState(defaultConfig)
 
   // generic setter for search params
   const setParam = (param: string) =>
-    (value: any) =>
+    (value: string) =>
       setSearchParams((s: SearchParams) => ({
         ...s,
         page: 1, // on search criteria change, reset the page to 1
@@ -87,7 +87,7 @@ export const SearchProvider = ({ children }: ProviderProps) => {
     console.log('loading API with', searchParams)
     api
       .get(searchParams)
-      .then((v: any) => setResults(v))
+      .then((v: ResultsType) => setResults(v))
   }, [searchParams])
 
   // Value to be passed to the context

@@ -1,4 +1,5 @@
 import { fetcher } from 'itty-fetcher'
+import { ResultsType } from '@/context/SearchContext'
 
 export type ApiQuery = {
   location?: string
@@ -8,5 +9,5 @@ export type ApiQuery = {
 }
 
 export const api = {
-  get: (query: ApiQuery) => fetcher().get('/api/search', query)
+  get: (query: ApiQuery): Promise<ResultsType> => fetcher().get('/api/search', query)
 }
