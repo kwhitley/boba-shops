@@ -1,5 +1,4 @@
-import { useSearch } from '@/context/SearchContext'
-import { Button } from '@/components/ui/button'
+import { SearchContextType, useSearch } from '@/context/SearchContext'
 import styled from 'styled-components'
 
 const PaginationContainer = styled.section`
@@ -10,7 +9,7 @@ const PaginationContainer = styled.section`
 `
 
 export const Pagination = () => {
-  const { on_page, max_pages, prev, next } = useSearch()
+  const { on_page, max_pages, prev, next } = useSearch() as SearchContextType
 
   return (
     <PaginationContainer>

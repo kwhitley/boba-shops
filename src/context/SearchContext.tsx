@@ -1,11 +1,11 @@
 import { api } from '@/lib/api'
-import { createContext, useContext, useEffect, useState } from 'react'
+import React, { createContext, useContext, useEffect, useState } from 'react'
 
 const SearchContext = createContext({})
 
 export type SearchParams = {
   location: string
-  distance: number
+  radius: number
   sort_by: 'distance' | 'rating'
   term: string
   page: number
@@ -18,45 +18,62 @@ export type BusinessType = {
   distance: number
 }
 
+export type ResultsType = {
+  businesses: BusinessType[]
+  on_page: number
+  max_pages: number
+}
+
 export type SearchContextType = {
   searchParams: SearchParams
-  results: BusinessType[]
+  results: ResultsType,
   setLocation: (value: string) => void
   setSortBy: (value: string) => void
+  on_page: number
+  max_pages: number
   next: () => void
   prev: () => void
 }
 
-export const SearchProvider = ({ children }) => {
+interface ProviderProps {
+  children: React.ReactNode;
+}
+
+export const SearchProvider = ({ children }: ProviderProps) => {
   const defaultConfig: SearchParams = {
     term: 'boba',
-    distance: 6000,
+    radius: 6000,
     location: '121 Albright Way, Los Gatos, CA 95032',
     sort_by: 'distance',
     page: 1,
-    max_pages: 1,
   }
 
-  const [results, setResults] = useState({}) // Replace with your state logic
+  const [results, setResults] = useState({
+    businesses: [],
+    on_page: 1,
+    max_pages: 1,
+  })
   const [searchParams, setSearchParams] = useState(defaultConfig)
 
   // generic setter for search params
-  const setParam = <T = string>(param: string) =>
-    (value: T) =>
-      setSearchParams(s => ({
+  const setParam = (param: string) =>
+    (value: any) =>
+      setSearchParams((s: SearchParams) => ({
         ...s,
-        page: 1,
+        page: 1, // on search criteria change, reset the page to 1
         [param]: value,
       }))
 
   // convenience controls for setting search params
   const setLocation = setParam('location')
   const setSortBy = setParam('sort_by')
-  const next = () => setSearchParams(s => ({
+
+  // these controls
+  const next = () => setSearchParams((s: SearchParams) => ({
     ...s,
     page: results.on_page + 1
   }))
-  const prev = () => setSearchParams(s => ({
+  const prev = () => setSearchParams((s: SearchParams) => ({
     ...s,
     page: results.on_page - 1
   }))
@@ -89,7 +106,7 @@ export const SearchProvider = ({ children }) => {
 }
 
 // export context as hook
-export const useSearch = (): SearchContextType => {
+export const useSearch = () => {
   const context = useContext(SearchContext)
 
   if (!context) {

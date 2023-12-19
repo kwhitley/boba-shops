@@ -4,7 +4,7 @@ export const ListItems = ({ items }: ListItemsProps) => (
   <table>
     <thead>
       <tr>
-        <th className="w-[100px]">Name</th>
+        <th>Shop Name</th>
         <th>Rating</th>
         <th>Distance</th>
       </tr>
