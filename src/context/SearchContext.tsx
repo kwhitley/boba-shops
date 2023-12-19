@@ -16,6 +16,10 @@ export type BusinessType = {
   rating: number
   review_count: number
   distance: number
+  location: {
+    address1: string
+    display_address: string[]
+  }
 }
 
 export type ResultsType = {

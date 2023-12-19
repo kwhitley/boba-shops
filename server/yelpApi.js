@@ -3,8 +3,8 @@ import { fetcher } from 'itty-fetcher'
 const { YELP_API_TOKEN } = process.env
 
 // helper utility to strip extraneous info from listings (alternatively could use GraphQL)
-const cleanListing = ({ name, url, review_count, rating, phone, display_phone, distance }) =>
-  ({ name, url, review_count, rating, phone, display_phone, distance })
+const cleanListing = ({ name, url, review_count, rating, phone, display_phone, distance, location }) =>
+  ({ name, url, review_count, rating, phone, display_phone, distance, location })
 
 // create an itty-fetcher instance to simplify fetches
 export const yelpApi = {
