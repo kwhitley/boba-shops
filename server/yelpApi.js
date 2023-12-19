@@ -1,3 +1,4 @@
+import 'isomorphic-fetch'
 import { fetcher } from 'itty-fetcher'
 
 const { YELP_API_TOKEN } = process.env
