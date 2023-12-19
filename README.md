@@ -6,12 +6,18 @@
 ### Setup:
 1. Clone this repo
 2. Install dependencies: from the installed directory, run `npm install`
-3. Rename the `.env.example` file to `.env`
-4. Edit the `.env` to include your own Yelp API token
-  ```bash
-  YELP_API_TOKEN=Tcz4HNPYCOyTTpjyDTzqVPibRoCQMkMdH # put your token here
-  PORT=3001
-  ```
+3. Add a `YELP_API_TOKEN` environment variable.  This may be accomplished via one of the following paths:
+    - ### (option 1) add an .env file
+     1. Rename `.env.example` file to `.env`
+     2. Edit the `.env` to include your own Yelp API token
+        ```bash
+        YELP_API_TOKEN=Tcz4HNPYCOyTTpjyDTzqVPibRoCQMkMdH # your token here
+        PORT=3001
+        ```
+    - ### (option 2) export via command line
+      ```bash
+      export YELP_API_TOKEN=Tcz4HNPYCOyTTpjyDTzqVPibRoCQMkMdH # your token here
+      ```
 5. Build & run in preview mode: `npm run preview`
 6. Open http://localhost:3001 in your browser (or your own specified port if overwritten in .env).
 
