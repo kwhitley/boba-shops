@@ -16,7 +16,6 @@ export const SelectLocation = () => {
         <SelectValue placeholder="Theme" />
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value="asd">Select One</SelectItem>
         <SelectItem value="121 Albright Way, Los Gatos, CA 95032">121 Albright Way, Los Gatos, CA 95032</SelectItem>
         <SelectItem value="888 Broadway, New York, NY 10003">888 Broadway, New York, NY 10003</SelectItem>
         <SelectItem value="5808 Sunset Blvd, Los Angeles, CA 90028">5808 Sunset Blvd, Los Angeles, CA 90028</SelectItem>
