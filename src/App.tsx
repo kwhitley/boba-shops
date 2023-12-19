@@ -1,42 +1,12 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import { Button } from '@/components/ui/button'
-import { ApiProvider } from './context/ApiContext'
-import { Results } from './Results'
-import './App.css'
+import { SearchProvider } from './context/SearchContext'
+import { SearchPage } from './pages/search/SearchPage'
 
-function App() {
-  const [count, setCount] = useState(0)
-
+// set up context providers
+export const App = () => {
   return (
-    <ApiProvider>
-      <Results />
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <Button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </Button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </ApiProvider>
+    <SearchProvider>
+      <h1>Boba Shop Finder</h1>
+      <SearchPage />
+    </SearchProvider>
   )
 }
-
-export default App

@@ -15,13 +15,18 @@ export const yelpApi = {
     },
     handleResponse: async (response) => {
       const data = await response.json()
+      const size = data.total
+      const max_pages = Math.ceil(data.total / (query.limit ?? 20))
+      const on_page = (query.offset ?? 0) / (query.limit ?? 20) + 1
 
       return !response.ok
         ? { error: data }
         : {
             data: {
               ...data,
-              businesses: data.businesses.map(cleanListing)
+              businesses: data.businesses.map(cleanListing),
+              on_page,
+              max_pages,
             }
           }
     }
