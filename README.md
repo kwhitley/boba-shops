@@ -27,6 +27,11 @@
 - `npm start` - starts the server
 - `npm run preview` - builds and starts the server
 
+### UX Decisions
+  - I opted for a simple table view for display, as it would be more intuitive during sorting
+  - Given the very few controls needed for search criteria, I created a responsive "controls" component that doubles as a description for what the user is seeing.  As complexity grows, that would easily be split to a more traditional filter bar.
+  - A results refresh is automatic, whenever search criteria changes - so no need for a specific "load" UI element
+
 ### Design Decisions
 Due to the time constraints, I opted to focus on the following areas:
   - Vite + Node server & client dev server setup
@@ -42,8 +47,12 @@ Due to the time constraints, I opted to focus on the following areas:
 
 ### Things I Skipped (due to time constraints)
   - Testing.  If this were a real app (and with time to achieve it), tests would be added.
+  - Accessibility.  Lighthouse scores take a bit of time to minigame.
+  - Clint-side caching to prevent duplicate requests.  Usually I'd use an off-the shelf lib that included caching, loading states, etc.
+  - Performance tuning (e.g. component memoization)
   - Data validation and error-handling throughout the app
   - Typical loading spinners or offline messaging
   - TypeScript on the server: These days, I've been using the [Bun](https://bun.sh) runtime, which spoils me with out-of-the-box TypeScript, ESM+CJS, web standards routing, etc.  As Node is a bit of a pain to get strapped with TS, I just skipped this.  In a production environment, this would certainly be TS, and tests would be added.
   - Compression (arguably better at a proxy layer anyway) or logging on the server
+  - A hover state/card for detailed individual business entries (e.g. phone number)
     
