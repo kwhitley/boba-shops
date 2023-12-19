@@ -11,7 +11,7 @@
      1. Rename `.env.example` file to `.env`
      2. Edit the `.env` to include your own Yelp API token
         ```bash
-        YELP_API_TOKEN=Tcz4HNPYCOyTTpjyDTzqVPibRoCQMkMdH # your token here
+        YELP_API_TOKEN="Tcz4HNPYCOyTTpjyDTzqVPibRoCQMkMdH" # your token here
         PORT=3001
         ```
     - ### (option 2) export via command line
