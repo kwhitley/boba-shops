@@ -36,23 +36,19 @@
 Due to the time constraints, I opted to focus on the following areas:
   - Vite + Node server & client dev server setup
     - in dev mode, Vite server proxies requests to `/api` through to the underlying Node server.  In prod mode, the Node handles all routing and statically serves from the `/dist` folder.  
-  - The Node layer consists of the following:
-    - a simple API proxy for the Yelp API to protect the API key
-    - a static file server
-    - for convenience int he front-end, I added pagination details  
   - a single search context within the React app, complete with controls for downstream manipulation
-  - implementation of [shadcn UI components](https://ui.shadcn.com/)
-    - this was a first-time use for me, as I've been looking for a new component library and this seemed like a good time to try out some of the simple components (specifically the select box)
-    - I still opted for styled-components and raw SCSS (app.scss) in some places, as I'm infinitely more comfortable in those zones and time was too short to dig through extensive docs on shadcn  
+  - implementation of [shadcn UI components](https://ui.shadcn.com/) - this was a first-time use for me, as I've been looking for a new component library and this seemed like a good time to try out some of the simple components (specifically the select box)
+  - I included a mix of styled-components and raw SCSS (app.scss) in some places, as I'm more comfortable with these and time was too short to dig through extensive docs on shadcn
 
 ### Things I Skipped (due to time constraints)
+  - URL/search-driven state flow.  A search app is a prime example of when to have state flow derived by the query string, but it takes time to set up properly.
   - Testing.  If this were a real app (and with time to achieve it), tests would be added.
-  - Accessibility.  Lighthouse scores take a bit of time to minigame.
-  - Clint-side caching to prevent duplicate requests.  Usually I'd use an off-the shelf lib that included caching, loading states, etc.
+  - Accessibility across the inputs/controls.
+  - Clint-side caching to prevent duplicate requests and speed up browsing.  Usually I'd use an off-the shelf lib that included caching, loading states, etc.
   - Performance tuning (e.g. component memoization)
-  - Data validation and error-handling throughout the app
+  - Data validation and error-handling throughout the app (e.g. if API fails to respond)
   - Typical loading spinners or offline messaging
   - TypeScript on the server: These days, I've been using the [Bun](https://bun.sh) runtime, which spoils me with out-of-the-box TypeScript, ESM+CJS, web standards routing, etc.  As Node is a bit of a pain to get strapped with TS, I just skipped this.  In a production environment, this would certainly be TS, and tests would be added.
-  - Compression (arguably better at a proxy layer anyway) or logging on the server
+  - Compression (arguably better done at a proxy layer anyway) or logging on the server
   - A hover state/card for detailed individual business entries (e.g. phone number)
     
